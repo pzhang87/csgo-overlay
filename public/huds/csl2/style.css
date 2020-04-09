@@ -300,7 +300,7 @@ html, body {
 }
 
 .team {
-    width: 400px;
+    width: 350px;
 }
 
 #playerOne, #playerTwo, #playerThree, #playerFour, #playerFive {
@@ -406,7 +406,7 @@ html, body {
 }
 
 .alive .weapon>img {
-    max-height: 16px;
+    max-height: 20px;
     filter: invert(100%);
 }
 
@@ -434,6 +434,7 @@ html, body {
 .alive .kit {
     width: 100px;
     text-align: center;
+    filter: invert(100%);
 }
 
 #teamTwo .alive {
@@ -449,7 +450,7 @@ html, body {
     padding-right: 4px;
 }
 
-.alive .utility img {
+.alive .equipment-bar img {
     margin: 0 8px;
     filter: invert(100%);
 }
@@ -461,7 +462,7 @@ html, body {
 #teamTwo .dead {
     transform: scaleX(-1);
     right: 0;
-    left: 100px;
+    left: 50px;
 }
 
 #teamTwo .dead > * {
@@ -562,7 +563,7 @@ html, body {
     height: 62px;
     width: 160px;
     background-color: rgba(255, 255, 255, .7);
-    left: 405px;
+    left: 355px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -571,6 +572,7 @@ html, body {
     align-self: center;
     text-align: center;
     color: red;
+    width: 50px;
 }
 
 .kad .label {
@@ -582,9 +584,10 @@ html, body {
 }
 
 .series-info {
+    transition: transform 1s ease;
     height: 84px;
-    width: 400px;
-    background-color: rgba(0, 50, 90, 0.8);
+    width: 350px;
+    background-color: rgba(0, 50, 90, 1);
     margin-bottom: 8px;
     display: flex;
     justify-content: space-evenly;
@@ -594,6 +597,7 @@ html, body {
 .series-name {
     display: inline-block;
     font-size: 24px;
+    width: 160px;
 }
 
 .series-logo {
@@ -606,7 +610,7 @@ html, body {
 
 .team-money {
     height: 84px;
-    width: 400px;
+    width: 350px;
     box-sizing: border-box;
     border: 3px solid #78d1fa;
     background-color: rgba(0, 0, 0, .4);

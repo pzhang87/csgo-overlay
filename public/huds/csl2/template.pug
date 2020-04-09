@@ -46,21 +46,23 @@ html
                 #observed-school
                     | University of Illinois at Urbana-Champaign
             #observed-hp-bar
-                img(src='/files/img/hp.png', style='height: 22px')
+                #observed-hp-img
+                    img(src='/files/img/hp.png', style='height: 22px')
                 #health-text 100
-                img(src='/files/img/armor.png', style='height: 22px')
+                #observed-armor-img
+                    img(src='/files/img/armor.png', style='height: 22px')
                 #armor-text 100
             #observed-equipment-bar
                 #kit
-                    img(src='/files/img/elements/kit.png', style='max-height: 25px; width: auto;')
+                    img(src='/files/img/elements/kit.png')
                 #nades
-                    #he
+                    .nade
                         img(src='/files/img/grenades/weapon_hegrenade.png')
-                    #flash
+                    .nade
                         img(src='/files/img/grenades/weapon_flashbang.png')
-                    #smoke
+                    .nade
                         img(src='/files/img/grenades/weapon_smokegrenade.png')
-                    #molly
+                    .nade
                         img(src='/files/img/grenades/weapon_molotov.png')
                 #ammo
                     #ammo-main 150&nbsp;
@@ -349,6 +351,13 @@ html
                         img(src='/files/img/weapons/deagle.png')
 
     #teamTwo.team
+        .team-money
+            .loss-bonus
+                .label Loss Bonus
+                .value $ 0
+            .equipment-value
+                .label Equipment Value
+                .value $ 0
         #playerOne
             .kad
                 .money-spent -$16000

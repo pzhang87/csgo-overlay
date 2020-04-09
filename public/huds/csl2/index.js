@@ -13,13 +13,17 @@ let bombTicking = false;
 let currBombTime = 0
 let bombInterval
 
+let lossBonusChanged = false
+let ctLossBonus = 1900
+let tLossBonus = 1900
+
 function startBomb(bombTime) {
     bombTicking = true
     $("#bomb-progress").css("visibility", "visible")
-    $("#bomb-progress").css("width", "353px")
+    $("#bomb-progress").css("width", "428px")
     currBombTime = bombTime
     bombInterval = setInterval(function () {
-        $("#bomb-progress").css("width", 353 * currBombTime / bombTime + "px")
+        $("#bomb-progress").css("width", 428 * currBombTime / bombTime + "px")
         currBombTime -= 0.01
         if (currBombTime <= 0) {
             stopBomb()
@@ -116,7 +120,14 @@ function populatePlayer(player, number, side) {
         $player.find('.weapon').empty()
         $player.find('.pistol').empty()
         $player.find('.utility').empty()
-        
+        if (player.steamid < 10) { // unconnected
+            $player.find('.bar').css('width', '0%')
+            $player.find('.health').find('.value').text("")
+            $player.find('.shield').empty()
+            $player.find('.money').text("")
+            return
+        }
+
         for (let key in weapons) {
             let weapon = weapons[key]
             let weaponName = weapon.name.replace('weapon_', '')
@@ -172,35 +183,60 @@ function populatePlayer(player, number, side) {
 function populateObserved(playerData) {
     let stats = playerData.getStats()
     let weapons = playerData.weapons
-
-    $("#player-container")
+    
+    $("#observed-name")
+        .removeClass("t ct")
+        .addClass(playerData.team.toLowerCase())
+    $("#ammo-reserve")
         .removeClass("t ct")
         .addClass(playerData.team.toLowerCase())
 
     $("#observed-name").html(playerData.name)
 
-    
+    $("#kit").html("")
+    if (stats.defusekit) {
+        $("#kit").append("<img src='/files/img/elements/kit.png'/>")
+    }
+
     $("#nades").html("")
 
     for (let key in weapons) {
         let weapon = weapons[key]
+        if (weapon.type == "C4") {
+            $("#kit").append("<img src='/files/img/elements/bomb.png'/>")
+            continue
+        }
         if (weapon.type == "Grenade") {
             for (let x = 0; x < weapon.ammo_reserve; x++) {
-                $("#nades").append($("<img />").attr("src", "/files/img/grenades/" + weapon.name + ".png"));
+                $("#nades").append(
+                    $("<div class='nade'>").append(($("<img />").attr("src", "/files/img/grenades/" + weapon.name + ".png"))));
             }
         }
         if (weapon.state == "active" || weapon.state == "reloading") {
             if (weapon.type == "Grenade" || weapon.type == "C4" || weapon.type == "Knife" || stats.health == 0) {
-                $(".clip").html("");
-                $(".reserve").html("");
+                $("#ammo-main").html("");
+                $("#ammo-reserve").html("");
             } else {
-                $(".clip").html(weapon.ammo_clip + "/")
-                $(".reserve").html(weapon.ammo_reserve)
+                $("#ammo-main").html(weapon.ammo_clip)
+                $("#ammo-reserve").html("/" + weapon.ammo_reserve)
             }
         }
     }
     $("#armor-text").html(stats.armor)
     $("#health-text").html(stats.health)
+
+    if (stats.health <= 20) {
+        $("#health-text").css("color", "#ff0000")
+    } else {
+        $("#health-text").css("color", "#ffffff")
+    }
+
+    $("#observed-armor-img").empty()
+    if (stats.helmet) {
+        $("#observed-armor-img").append("<img src='/files/img/helmet.png'/>")
+    } else {
+        $("#observed-armor-img").append("<img src='/files/img/armor.png'/>")
+    }
     $("#armor-text")
         .removeClass("armor helmet")
         .addClass(stats.helmet
@@ -254,14 +290,15 @@ function updatePage(data) {
     let testPlayerTwo = data.getPlayer(1)
     let teamCT = data.getCT()
     let teamT = data.getT()
+    console.log(players)
 
     // Set up teams dict
     if (testPlayerTwo) {
         let teamOne = data.getTeamOne()
         let teamTwo = data.getTeamTwo()
 
-        left = testPlayerTwo.team.toLowerCase() === "ct" ? teamCT : teamT
-        right = testPlayerTwo.team.toLowerCase() !== "ct" ? teamCT : teamT
+        left = teamCT
+        right = teamT
 
         teams.left.side = left.side || null
         teams.right.side = right.side || null
@@ -295,6 +332,12 @@ function updatePage(data) {
         startMoney = {}
     }
 
+    // Reset round loss bonuses if it's pistol
+    if (map.round === 0 || map.round == 15) {
+        ctLossBonus = 1900
+        tLossBonus = 1900
+    }
+
     // Round
     $("#round-counter").html("Round " + currRound + " / 30");
     
@@ -323,6 +366,13 @@ function updatePage(data) {
         populatePlayers(teams)
     }
 
+    // Team Money
+    $("#teamOne").find(".loss-bonus").find('.value').text("$ " + ctLossBonus)
+    $("#teamOne").find(".equipment-value").find(".value").text("$ " + teamCT.equip_value)
+
+    $("#teamTwo").find(".loss-bonus").find('.value').text("$ " + tLossBonus)
+    $("#teamTwo").find(".equipment-value").find(".value").text("$ " + teamT.equip_value)
+    
     // Phase
     if (phase) {
         $("#time-counter").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10))
@@ -342,17 +392,6 @@ function updatePage(data) {
                 if (phase.phase === "bomb" && !bombTicking) {
                     startBomb(phase.phase_ends_in)
                 }
-                if (phase.phase === "defuse") {
-                    let defuseLength = 5 // seconds
-                    if (!isDefusing) {
-                        if (parseFloat(phase.phase_ends_in) > 5) {
-                            defuseLength = 10
-                        }
-                        isDefusing = true;
-                    }
-                    let seconds = parseFloat(phase.phase_ends_in);
-                    $("#defuse-progress").css("width", seconds / defuseLength * 353 + "px")
-                }
                 $("#time-counter").text("").addClass("bomb-timer")
             } else {
                 stopBomb();
@@ -368,8 +407,8 @@ function updatePage(data) {
                     isDefusing = true;
                 }
                 let seconds = parseFloat(phase.phase_ends_in);
-                let widthRemaining = Math.min(seconds / defuseLength, 1.0) * 353
-                $("#defuse-progress").css("width", seconds / defuseLength * 353 + "px")
+                let widthRemaining = Math.min(seconds / defuseLength, 1.0) * 428
+                $("#defuse-progress").css("width", widthRemaining)
             } else {
                 isDefusing = false
                 $("#defuse-progress").css("width", 0)
@@ -379,32 +418,43 @@ function updatePage(data) {
             if (phase.phase == "freezetime" || phase.phase.substring(0,7) == "timeout") {
                 if (phase.phase_ends_in > 3) {
                     if ($(".kad").css("opacity") == 0) {
-                        $(".kad").fadeTo(1000, 1);
-                        // $("#stats-container").fadeTo(1000,1);
-                        // $(".stat_t").fadeTo(1000, 1);
-                        $(".series-info").css("transform","translate(0, 0px)");
+                        $(".kad").fadeTo(1000, 1)
+                        $(".series-info").css("transform","translate(0, 0px)")
+                        $(".team-money").fadeTo(800, 1)
                     }
                 } else {
                     if ($(".kad").css("opacity") == 1) {
                         $(".kad").fadeTo(1000, 0);
-                        // $(".stat_t").fadeTo(1000, 0);
-                        // $("#stats-container").fadeTo(1000,0);
+                        $(".team-money").fadeTo(800, 0)
                         $(".series-info").css("transform","translate(0, 92px)");
                         if (observed && observed.steamid != 1) 
                             $("#player-container").fadeTo(1000, 1);
-    
                         }
                     }
     
             } else {
                 if ($(".kad").css("opacity") == 1) {
                     $(".kad").fadeTo(1000, 0);
-                    // $(".stat_t").fadeTo(1000, 0);
-                    // $("#stats-container").fadeTo(1000,0);
+                    $(".team-money").fadeTo(800, 0)
                     $(".series-info").css("transform","translate(0, 92px)");
                     if (observed && observed.steamid != 1) 
                         $("#player-container").fadeTo(1000, 1);
                 }
+            }
+
+            if (phase.phase === "over" && !lossBonusChanged) {
+                lossBonusChanged = true
+                if (round.win_team === "T") {
+                    tLossBonus = Math.max(tLossBonus - 500, 1400)
+                    ctLossBonus = Math.min(ctLossBonus + 500, 3400)
+                } else {
+                    ctLossBonus = Math.max(ctLossBonus - 500, 1400)
+                    tLossBonus = Math.min(tLossBonus + 500, 3400)
+                }
+            }
+
+            if (phase.phase !== "over") {
+                lossBonusChanged = false
             }
         }
     }

@@ -3,7 +3,7 @@ html, body {
     padding: 0;
     font-family: 'Druk Text', sans-serif;
     color: white;
-    background: linear-gradient(#e66465, #9198e5);
+    /* background: linear-gradient(#e66465, #9198e5); */
 }
 
 #left-50 {
@@ -44,6 +44,14 @@ html, body {
     background-color: rgba(211,211,211,0.4);
 }
 
+.ct {
+    color: #0064c8;
+}
+
+.t {
+    color: #ff8228;
+}
+
 .ct .win {
     background-color: #0064c8;
 }
@@ -71,25 +79,27 @@ html, body {
 #top-bar {
     margin: 5px auto 0 auto;
     height: 55px;
-    width: 1000px;
+    width: 1150px;
     background-color: rgba(0, 0, 0, .4);
-    display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #team-1-name {
     font-size: 36px;
-    text-align: left;
-    padding-left: 20px;
+    text-align: right;
+    padding-right: 190px;
     line-height: 55px;
+    width:500px;
 }
 
 #team-2-name {
     font-size: 36px;
-    text-align: right;
-    padding-right: 20px;
+    text-align: left;
+    padding-left: 190px;
     line-height: 55px;
+    width:500px;
 }
 
 #score {
@@ -242,25 +252,30 @@ html, body {
     justify-content: center;
     align-items: center;
     margin: 0 10px;
-    width: 40px;
+    width: 28px;
+}
+
+#kit > img {
+    width: auto;
+    max-height: 25px;
 }
 
 #nades {
     grid-area: nades;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
-#he, #flash, #smoke, #molly {
-    width: 100%;
-    text-align: center;
-}
-
-#he > img, #flash > img, #smoke > img, #molly > img {
-    max-height: 25px;
+.nade > img {
+    height: 25px;
     filter: invert(50%);
     margin-top: -5px;
+}
+
+.nade {
+    text-align: center;
+    width: 20px;
 }
 
 #ammo {
@@ -275,6 +290,7 @@ html, body {
 }
 
 #ammo-reserve {
+    padding-left: 4px;
     font-size: 22;
 }
 
@@ -547,11 +563,12 @@ html, body {
     padding-left: 10px;
 }
 
-#armor-text.armor{
-    background-image: url("/files/img/armor.png");
+#observed-hp-img > img {
+    height: 22px;
 }
-#armor-text.helmet{
-    background-image: url("/files/img/helmet.png");
+
+#observed-armor-img > img {
+    height: 22px;
 }
 
 #teamTwo .kad {
@@ -613,7 +630,7 @@ html, body {
     width: 350px;
     box-sizing: border-box;
     border: 3px solid #78d1fa;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .6);
     display: flex;
     justify-content: space-evenly;
 }

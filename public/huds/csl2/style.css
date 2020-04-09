@@ -52,6 +52,22 @@ html, body {
     background-color: #eea61b;
 }
 
+#defuse-progress {
+    position: absolute;
+    width: 353px;
+    height: 10px;
+    background-color: blue;
+    right: 1107px;
+}
+
+#bomb-progress {
+    position: absolute;
+    width: 353px;
+    height: 10px;
+    background-color: red;
+    left: 1107px;
+}
+
 #top-bar {
     margin: 5px auto 0 auto;
     height: 55px;
@@ -103,7 +119,7 @@ html, body {
     left: -86px;
     width: 12px;
     height: 72px;
-    transform: skewX(36deg);
+    transform: skewX(18deg);
     background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -113,7 +129,7 @@ html, body {
     left: -174px;
     height: 72px;
     width: 100px;
-    transform: skewX(36deg);
+    transform: skewX(18deg);
     background-color: #0064c8;
 }
 
@@ -124,7 +140,7 @@ html, body {
     left: 74px;
     width: 12px;
     height: 72px;
-    transform: skewX(-36deg);
+    transform: skewX(-18deg);
     background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -134,18 +150,18 @@ html, body {
     right: 26px;
     height: 72px;
     width: 100px;
-    transform: skewX(-36deg);
+    transform: skewX(-18deg);
     background-color: #eea61b;
 }
 
 #team-1-score {
-    transform: skewX(-36deg);
+    transform: skewX(-18deg);
     padding-right: 35px;
     text-align: right;
 }
 
 #team-2-score {
-    transform: skewX(36deg);
+    transform: skewX(18deg);
     padding-left: 36px;
 }
 
@@ -158,25 +174,27 @@ html, body {
 #player-container {
     position: relative;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-areas: 
+        "name name name name name name name name name name"
+        "hp-armor hp-armor hp-armor hp-armor eq eq eq eq eq eq";
     gap: 2px;
     left: -50%;
     background-color: transparent;
-    width: 400px;
+    width: 480px;
 }
 
-#player-name-bar {
+#observed-name-bar {
     position: relative;
     background-color: rgba(0, 0, 0, .8);
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-area: name;
     height: 40px;
     display: grid;
     grid-template-columns: auto auto;
     padding: 10px 20px;
 }
 
-#player-name {
+#observed-name {
     text-align: left;
     line-height: 40px;
     font-size: 34px;
@@ -184,31 +202,80 @@ html, body {
     grid-row-end: 3;
 }
 
-#player-year {
+#observed-year {
     text-align: right;
     font-size: 16px;
     font-weight: bold;
     color: white;
 }
 
-#player-school {
+#observed-school {
     text-align: right;
     font-size: 14px;
     color: gray;
 }
 
-#player-hp-bar {
+#observed-hp-bar {
+    grid-area: hp-armor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     background-color: rgba(0, 0, 0, 0.5);
     height: 60px;
 }
 
-#player-equipment-bar {
+#observed-equipment-bar {
+    grid-area: eq;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-areas:
+        "kit nades nades nades nades nades ammo ammo ammo ammo ammo";
     position: relative;
-    grid-column-start: 2;
-    grid-column-end: 4;
     background-color: rgba(0, 0, 0, 0.5);
     height: 60px;
+}
+
+#observed-equipment-bar #kit {
+    grid-area: kit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    width: 40px;
+}
+
+#nades {
+    grid-area: nades;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#he, #flash, #smoke, #molly {
+    width: 100%;
+    text-align: center;
+}
+
+#he > img, #flash > img, #smoke > img, #molly > img {
+    max-height: 25px;
+    filter: invert(50%);
+    margin-top: -5px;
+}
+
+#ammo {
+    grid-area: ammo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ammo-main {
+    font-size: 32;
+}
+
+#ammo-reserve {
+    font-size: 22;
 }
 
 .bomb-timer{
@@ -218,4 +285,342 @@ html, body {
     background-position: center;
     width: 100%;
     height: 60%;
+}
+
+#teamOne {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+#teamTwo {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.team {
+    width: 400px;
+}
+
+#playerOne, #playerTwo, #playerThree, #playerFour, #playerFive {
+    position: relative;
+    height: 62px;
+    margin: 5px 0;
+}
+
+.alive {
+    visibility: visible;
+    background-color:rgba(0, 0, 0, 0.5);
+    height: 62px;
+    position: relative;
+    font-size: 14px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.alive img {
+    height: 60%;
+    width: auto;
+}
+
+.alive .health {
+    height: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: relative;
+    /* z-index: -2; */
+}
+
+#teamOne .alive .health > .bar {
+    background: linear-gradient(to right, #00325a, #0064c8);
+}
+
+#teamTwo .alive .health > .bar {
+    background: linear-gradient(to left, #eea61b, #ff8228);
+}
+
+.alive .health>.bar {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    /* z-index: -1; */
+}
+
+.alive .health>.stats {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+/* #teamTwo .alive .health > .stats {
+    flex-direction: row-reverse;
+} */
+
+.alive .stats>.value {
+    margin-left: 12px;
+    width: 24px;
+    font-size: 18px;
+}
+
+#teamTwo .alive .stats>.value {
+    transform: scaleX(-1);
+}
+
+.alive .stats>.shield {
+    text-align: center;
+    margin: 0 8px;
+    width: 20px;
+}
+
+.alive .stats>.divider {
+    background-color: white;
+    height: 15px;
+    width: 1px;
+}
+
+.alive .username {
+    margin-left: 8px;
+    width: 120px;
+    font-size: 18px;
+}
+
+#teamTwo .alive .username {
+    transform: scaleX(-1);
+    text-align: right;
+}
+
+.alive .weapon {
+    flex: 1;
+    margin-right: 12px;
+    text-align: right;
+}
+
+.alive .weapon>img {
+    max-height: 16px;
+    filter: invert(100%);
+}
+
+.alive .equipment-bar {
+    height: 32px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#teamTwo .alive .money {
+    transform: scaleX(-1);
+}
+
+.alive .money {
+    margin-left: 12px;
+    width: 50px;
+    font-size: 16px;
+    color: #00ff12;
+}
+
+.alive .kit {
+    width: 100px;
+    text-align: center;
+}
+
+#teamTwo .alive {
+    transform: scaleX(-1);
+}
+
+.alive .utility {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+}
+
+.alive .utility img {
+    margin: 0 8px;
+    filter: invert(100%);
+}
+
+.alive .utility>img {
+    margin: 0 4px;
+}
+
+#teamTwo .dead {
+    transform: scaleX(-1);
+    right: 0;
+    left: 100px;
+}
+
+#teamTwo .dead > * {
+    transform: scaleX(-1);
+}
+
+
+.dead {
+    width: 300px;
+    height: 62px;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, .4);
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas: "skull player player player stats stats stats stats";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.dead .death-image {
+    grid-area: skull;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dead .player {
+    grid-area: player;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: left;
+}
+
+.dead .player > .name {
+    color: rgba(255, 255, 255, .6);
+}
+
+.dead .player > .money {
+    color: #00be0d;
+}
+
+#teamTwo .dead .player {
+    text-align: right;
+}
+
+.dead .stats, .kad .stats {
+    grid-area: stats;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.dead .stats {
+    color: rgba(255, 255, 255, .8);
+}
+
+.dead .stats > * , .kad .stats > * {
+    height: 100%;
+    font-weight: bold;;
+    font-size: 18px;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#observed-hp-bar #health-text {
+    font-size: 32px;
+    padding-left: 10px;
+    margin-right: 15px;
+}
+
+#observed-hp-bar #armor-text {
+    font-size: 32px;
+    padding-left: 10px;
+}
+
+#armor-text.armor{
+    background-image: url("/files/img/armor.png");
+}
+#armor-text.helmet{
+    background-image: url("/files/img/helmet.png");
+}
+
+#teamTwo .kad {
+    left: -165px;
+}
+
+.kad {
+    position: absolute;
+    height: 62px;
+    width: 160px;
+    background-color: rgba(255, 255, 255, .7);
+    left: 405px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.kad .money-spent {
+    align-self: center;
+    text-align: center;
+    color: red;
+}
+
+.kad .label {
+    color: #001941;
+}
+
+.kad .value {
+    color: #00B4FA;
+}
+
+.series-info {
+    height: 84px;
+    width: 400px;
+    background-color: rgba(0, 50, 90, 0.8);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.series-name {
+    display: inline-block;
+    font-size: 24px;
+}
+
+.series-logo {
+    display: inline-block;
+}
+
+.series-logo > img {
+    height: 60px;
+}
+
+.team-money {
+    height: 84px;
+    width: 400px;
+    box-sizing: border-box;
+    border: 3px solid #78d1fa;
+    background-color: rgba(0, 0, 0, .4);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.team-money > * {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team-money > * > * {
+    margin: 2px;
 }

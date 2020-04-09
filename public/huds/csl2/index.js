@@ -7,15 +7,30 @@ let startMoney = {};
 let prevRound = 0;
 let freezeTime = false;
 
+function populatePlayers(teams) {
+    if (teams.left.players) {
+
+    }
+
+    if (teams.right.players) {
+
+    }
+}
+
+function populatePlayer(player) {
+    let weapons = player.getWeapons()
+    let statistics = player.getStats()
+}
+
 function populateObserved(playerData) {
     let stats = playerData.getStats()
     let weapons = playerData.weapons
 
     $("#player-container")
         .removeClass("t ct")
-        .addClass(playerData.team.toLowerCase());
+        .addClass(playerData.team.toLowerCase())
 
-    $("#player-name").html(playerData.name)
+    $("#observed-name").html(playerData.name)
 
     
     $("#nades").html("")
@@ -28,7 +43,7 @@ function populateObserved(playerData) {
             }
         }
         if (weapon.state == "active" || weapon.state == "reloading") {
-            if (weapon.type == "Grenade" || weapon.type == "C4" || weapon.type == "Knife" || statistics.health == 0) {
+            if (weapon.type == "Grenade" || weapon.type == "C4" || weapon.type == "Knife" || stats.health == 0) {
                 $(".clip").html("");
                 $(".reserve").html("");
             } else {
@@ -37,11 +52,11 @@ function populateObserved(playerData) {
             }
         }
     }
-    $("#armor-text").html(statistics.armor)
-    $("#health-text").html(statistics.health)
+    $("#armor-text").html(stats.armor)
+    $("#health-text").html(stats.health)
     $("#armor-text")
         .removeClass("armor helmet")
-        .addClass(statistics.helmet
+        .addClass(stats.helmet
             ? "helmet"
             : "armor")
 }
@@ -150,6 +165,11 @@ function updatePage(data) {
     // Observed Player
     if (observed && observed.steamid != 1 && observed.getStats()) {
         populateObserved(observed);
+    }
+
+    // All players
+    if (players) {
+        populatePlayers(teams)
     }
 
     // Phase

@@ -13,6 +13,8 @@ html
     #top-bar
         #team-1-name Illinois Orange
         #team-2-name Name for team 2
+    #defuse-progress
+    #bomb-progress
     #left-50(style="top: 5px")
         #score
             #round-counter Round 0 / 30
@@ -34,18 +36,585 @@ html
                 .series-block
                 .series-block
                 .series-block
-    #left-50(style="bottom: 6%")
+    #left-50(style="bottom: 3%")
         #player-container
-            #player-name-bar
-                #player-name
+            #observed-name-bar
+                #observed-name
                     | Bokumbop
-                #player-year
+                #observed-year
                     | Senior
-                #player-school
+                #observed-school
                     | University of Illinois at Urbana-Champaign
-            #player-hp-bar
+            #observed-hp-bar
+                img(src='/files/img/hp.png', style='height: 22px')
                 #health-text 100
+                img(src='/files/img/armor.png', style='height: 22px')
                 #armor-text 100
-            #player-equipment-bar
-                #ammo-main 30
-                #ammo-reserve 90
+            #observed-equipment-bar
+                #kit
+                    img(src='/files/img/elements/kit.png', style='max-height: 25px; width: auto;')
+                #nades
+                    #he
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                    #flash
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                    #smoke
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                    #molly
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                #ammo
+                    #ammo-main 150&nbsp;
+                    #ammo-reserve / 300
+
+    #teamOne.team
+        .series-info
+            .series-name Spring 2020 All Star Game
+            .series-logo
+                img(src='/files/img/csl-logo.png')
+        .team-money
+            .loss-bonus
+                .label Loss Bonus
+                .value $ 2400
+            .equipment-value
+                .label Equipment Value
+                .value $ 42398
+        #playerOne
+            .kad
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+                .money-spent -$7500
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+        #playerTwo
+            .kad
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+                .money-spent -$7500
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+        #playerThree
+            .kad
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+                .money-spent -$7500
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+        #playerFour
+            .kad
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+                .money-spent -$7500
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+        #playerFive
+            .kad
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+                .money-spent -$7500
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+    #teamTwo.team
+        #playerOne
+            .kad
+                .money-spent -$16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+        #playerTwo
+            .kad
+                .money-spent -$16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+        #playerThree
+            .kad
+                .money-spent -$16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+        #playerFour
+            .kad
+                .money-spent -$16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')
+
+        #playerFive
+            .kad
+                .money-spent -$16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .dead
+                .death-image
+                    img(src='/files/img/death.png')
+                .player
+                    .name xPie-
+                    .money $ 16000
+                .stats
+                    .k
+                        .label K
+                        .value 10
+                    .a
+                        .label A
+                        .value 10
+                    .d
+                        .label D
+                        .value 00
+            .alive
+                .health
+                    .bar
+                    .stats
+                        .value 100
+                        .shield
+                            img(src='/files/img/helmet.png')
+                        .divider
+                        .username xPee
+                        .weapon 
+                            img(src='/files/img/weapons/awp.png')
+                .equipment-bar
+                    .money $ 16000
+                    .kit
+                        img(src='/files/img/elements/kit.png')
+                    .utility
+                        img(src='/files/img/grenades/weapon_hegrenade.png')
+                        img(src='/files/img/grenades/weapon_flashbang.png')
+                        img(src='/files/img/grenades/weapon_smokegrenade.png')
+                        img(src='/files/img/grenades/weapon_molotov.png')
+                        .zues
+                            img(src='/files/img/weapons/taser.png')
+                        .pistol
+                            img(src='/files/img/weapons/deagle.png')

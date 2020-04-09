@@ -1,0 +1,51 @@
+html
+  head
+    script(src="/socket.io/socket.io.js")
+    script(src="http://code.jquery.com/jquery-2.1.4.min.js")
+    script.
+      var ip = "#{ip}",
+      port = "#{port}",
+      delay = #{delay};
+    script(src="/js/main.js")
+    script(src=hud)
+    link(rel='stylesheet', href=css)
+  body
+    #top-bar
+        #team-1-name Illinois Orange
+        #team-2-name Name for team 2
+    #left-50(style="top: 5px")
+        #score
+            #round-counter Round 0 / 30
+            #time-counter 00:00
+        #left-score-divider
+        #left-score
+            #team-1-score.score-num 16
+        #right-score-divider
+        #right-score
+            #team-2-score.score-num 16
+    #left-50(style="top: 80px")
+        #series-info
+            #team-1-series
+                .series-block
+                .series-block
+                .series-block
+            #series-detail Best of 5
+            #team-2-series
+                .series-block
+                .series-block
+                .series-block
+    #left-50(style="bottom: 6%")
+        #player-container
+            #player-name-bar
+                #player-name
+                    | Bokumbop
+                #player-year
+                    | Senior
+                #player-school
+                    | University of Illinois at Urbana-Champaign
+            #player-hp-bar
+                #health-text 100
+                #armor-text 100
+            #player-equipment-bar
+                #ammo-main 30
+                #ammo-reserve 90

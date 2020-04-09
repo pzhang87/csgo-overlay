@@ -1,0 +1,221 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Druk Text', sans-serif;
+    color: white;
+    background: linear-gradient(#e66465, #9198e5);
+}
+
+#left-50 {
+    position: absolute;
+    left: 50%;
+}
+
+#series-info {
+    position: relative;
+    left: -50%;
+    height: 20px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#team-1-series {
+    text-align: left;
+    padding-left: 10px;
+}
+
+#series-detail {
+    text-align: center;
+    line-height: 20px;
+}
+
+#team-2-series {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.series-block {
+    display: inline-block;
+    margin: 3px 5px 0 5px;
+    width:14px;
+    height:14px;
+    background-color: rgba(211,211,211,0.4);
+}
+
+.ct .win {
+    background-color: #0064c8;
+}
+
+.t .win {
+    background-color: #eea61b;
+}
+
+#top-bar {
+    margin: 5px auto 0 auto;
+    height: 55px;
+    width: 1000px;
+    background-color: rgba(0, 0, 0, .4);
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 300px;
+}
+
+#team-1-name {
+    font-size: 36px;
+    text-align: left;
+    padding-left: 20px;
+    line-height: 55px;
+}
+
+#team-2-name {
+    font-size: 36px;
+    text-align: right;
+    padding-right: 20px;
+    line-height: 55px;
+}
+
+#score {
+    position: relative;
+    left: -50%;
+    height: 72px;
+    width: 200px;
+    background-color: white;
+    color: black;
+}
+
+#round-counter {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#time-counter {
+    text-align: center;
+    font-size: 36px;
+}
+
+#left-score-divider {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: -86px;
+    width: 12px;
+    height: 72px;
+    transform: skewX(36deg);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#left-score {
+    position: absolute;
+    top: 0;
+    left: -174px;
+    height: 72px;
+    width: 100px;
+    transform: skewX(36deg);
+    background-color: #0064c8;
+}
+
+#right-score-divider {
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 74px;
+    width: 12px;
+    height: 72px;
+    transform: skewX(-36deg);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#right-score {
+    position: absolute;
+    top: 0;
+    right: 26px;
+    height: 72px;
+    width: 100px;
+    transform: skewX(-36deg);
+    background-color: #eea61b;
+}
+
+#team-1-score {
+    transform: skewX(-36deg);
+    padding-right: 35px;
+    text-align: right;
+}
+
+#team-2-score {
+    transform: skewX(36deg);
+    padding-left: 36px;
+}
+
+.score-num {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 72px;
+}
+
+#player-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2px;
+    left: -50%;
+    background-color: transparent;
+    width: 400px;
+}
+
+#player-name-bar {
+    position: relative;
+    background-color: rgba(0, 0, 0, .8);
+    grid-column-start: 1;
+    grid-column-end: 4;
+    height: 40px;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px 20px;
+}
+
+#player-name {
+    text-align: left;
+    line-height: 40px;
+    font-size: 34px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+#player-year {
+    text-align: right;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+#player-school {
+    text-align: right;
+    font-size: 14px;
+    color: gray;
+}
+
+#player-hp-bar {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 60px;
+}
+
+#player-equipment-bar {
+    position: relative;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 60px;
+}
+
+.bomb-timer{
+    background-image:url('/files/img/elements/c4_timer.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 60%;
+}

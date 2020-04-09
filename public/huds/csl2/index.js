@@ -183,7 +183,7 @@ function populatePlayer(player, number, side) {
 function populateObserved(playerData) {
     let stats = playerData.getStats()
     let weapons = playerData.weapons
-    
+
     $("#observed-name")
         .removeClass("t ct")
         .addClass(playerData.team.toLowerCase())
@@ -192,6 +192,11 @@ function populateObserved(playerData) {
         .addClass(playerData.team.toLowerCase())
 
     $("#observed-name").html(playerData.name)
+
+    $("#observed-school").text("")
+    $("#observed-year").text("")
+    $("#observed-school").text(playerData.school)
+    $("#observed-year").text(playerData.year)
 
     $("#kit").html("")
     if (stats.defusekit) {
@@ -290,7 +295,6 @@ function updatePage(data) {
     let testPlayerTwo = data.getPlayer(1)
     let teamCT = data.getCT()
     let teamT = data.getT()
-    console.log(players)
 
     // Set up teams dict
     if (testPlayerTwo) {

@@ -23,6 +23,12 @@
 			.input-field.col.s12.m6
 				input#sid.validate(placeholder='Steam ID 64', type='text', pattern="[0-9]+", name="sid")
 				label(for='sid') SteamID64
+			.input-field.col.s12.m6
+				input#school.validate(placeholder='School', type='text', name='school')
+				label(for='school') School Name
+			.input-field.col.s12.m6
+				input#year.validate(placeholder='Year', type='text', name='year')
+				label(for='year') Year (Grade)
 			.input-field.col.s12
 				a.waves-effect.waves-light.btn#save_player Save player
 				a.waves-effect.waves-light.btn.disabled#delete_player Delete player

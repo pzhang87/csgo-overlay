@@ -199,9 +199,12 @@ $(document).ready(function () {
                     slotted[slot].name = players_data[steamid]
                         ? players_data[steamid].displayed_name || name
                         : name;
+                    console.log(players_data[steamid])
                     slotted[slot].real_name = players_data[steamid]
                         ? players_data[steamid].real_name || name
                         : name;
+                    slotted[slot].school = players_data[steamid] ? players_data[steamid].school : ""
+                    slotted[slot].year = players_data[steamid] ? players_data[steamid].year : ""
                     if (players_data[steamid] && players_data[steamid].country_code) {
                         slotted[slot].country_code = players_data[steamid].country_code;
                     }

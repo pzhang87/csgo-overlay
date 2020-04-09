@@ -29,7 +29,9 @@ $(document).ready(function(){
             real_name: $("#real_name").val(),
             displayed_name: $("#vis_name").val(),
             country_code: $("#country").val(),
-            team:$("#teams_list").val()
+            team:$("#teams_list").val(),
+            school: $("#school").val(),
+            year: $("#year").val(),
         };
         let localId = $("#players").val();
         if(localId == "default"){

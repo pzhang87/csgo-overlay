@@ -251,5 +251,6 @@ function loadPlayer(player){
     $("#delete_player").removeClass("disabled").addClass(!player ? "disabled" : "");
     $("#country").formSelect();
     $("#teams_list").formSelect();
-
+    $("#school").val(player ? player.school : "");
+    $("#year").val(player ? player.year : "");
 }

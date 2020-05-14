@@ -185,7 +185,7 @@ html, body {
     position: relative;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    grid-template-areas: 
+    grid-template-areas:
         "name name name name name name name name name name"
         "hp-armor hp-armor hp-armor hp-armor eq eq eq eq eq eq";
     gap: 2px;
@@ -602,10 +602,11 @@ html, body {
 
 .series-info {
     transition: transform 1s ease;
-    height: 84px;
+    height: 112px;
     width: 350px;
-    background-color: rgba(0, 50, 90, 1);
-    margin-bottom: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("/files/img/logo-box.png");
+    margin-bottom: 12px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -618,18 +619,31 @@ html, body {
 }
 
 .series-logo {
-    display: inline-block;
+    overflow: visible;
 }
 
 .series-logo > img {
-    height: 60px;
+    position: relative;
+    left: 10px;
+    height: 100px;
+    overflow: visible;
+}
+
+.series-rotator {
+  position: relative;
+  top: 12px;
+}
+
+.series-rotator > video {
+  height: 80px;
+  width: 160px;
 }
 
 .team-money {
     height: 84px;
     width: 350px;
     box-sizing: border-box;
-    border: 3px solid #78d1fa;
+    border: 3px solid #111111;
     background-color: rgba(0, 0, 0, .6);
     display: flex;
     justify-content: space-evenly;

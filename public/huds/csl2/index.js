@@ -87,7 +87,7 @@ function populatePlayer(player, number, side) {
     } else {
         return
     }
-    
+
     $player.find('.username').text(player.name)
     $player.find('.money').text("$ " + stats.money)
     $player.find('.k').find('.value').text(stats.kills)
@@ -163,7 +163,7 @@ function populatePlayer(player, number, side) {
             $player.find('.weapon').append('<img src="/files/img/weapons/' + weaponName + '.png"/>')
         }
     } else {
-        // Dead overlay 
+        // Dead overlay
         $player.find('.alive').css('visibility', 'hidden')
         $player.find('.dead').css('visibility', 'visible')
     }
@@ -173,7 +173,7 @@ function populatePlayer(player, number, side) {
     }
 
     const moneySpent = startMoney[steamid] - stats.money
-    
+
     $player.find(".money-spent").text("")
     if (moneySpent) {
         $player.find(".money-spent").text("-$" + moneySpent)
@@ -250,8 +250,8 @@ function populateObserved(playerData) {
 }
 
 function populateTeamInfo(teams) {
-    $("#team-1-name").text(teams.left.name)
-    $("#team-2-name").text(teams.right.name)
+    $("#team-1-name").text(teams.left.name.toUpperCase())
+    $("#team-2-name").text(teams.right.name.toUpperCase())
 }
 
 function populateSeriesBar(matchType, matchInfo) {
@@ -344,7 +344,7 @@ function updatePage(data) {
 
     // Round
     $("#round-counter").html("Round " + currRound + " / 30");
-    
+
     // Score
     $("#team-1-score").html(teams.left.score);
     $("#team-2-score").html(teams.right.score);
@@ -376,13 +376,13 @@ function updatePage(data) {
 
     $("#teamTwo").find(".loss-bonus").find('.value').text("$ " + tLossBonus)
     $("#teamTwo").find(".equipment-value").find(".value").text("$ " + teamT.equip_value)
-    
+
     // Phase
     if (phase) {
         $("#time-counter").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10))
             ? "black"
             : "red");
-        
+
         if (phase.phase_ends_in) {
             let countDown = Math.abs(Math.ceil(phase.phase_ends_in))
             let countMinutes = Math.floor(countDown / 60)
@@ -431,17 +431,17 @@ function updatePage(data) {
                         $(".kad").fadeTo(1000, 0);
                         $(".team-money").fadeTo(800, 0)
                         $(".series-info").css("transform","translate(0, 92px)");
-                        if (observed && observed.steamid != 1) 
+                        if (observed && observed.steamid != 1)
                             $("#player-container").fadeTo(1000, 1);
                         }
                     }
-    
+
             } else {
                 if ($(".kad").css("opacity") == 1) {
                     $(".kad").fadeTo(1000, 0);
                     $(".team-money").fadeTo(800, 0)
                     $(".series-info").css("transform","translate(0, 92px)");
-                    if (observed && observed.steamid != 1) 
+                    if (observed && observed.steamid != 1)
                         $("#player-container").fadeTo(1000, 1);
                 }
             }

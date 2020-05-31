@@ -605,7 +605,6 @@ html, body {
     height: 112px;
     width: 350px;
     background-color: rgba(0, 0, 0, 0);
-    background-image: url("/files/img/logo-box.png");
     background-repeat: no-repeat;
     margin-bottom: 12px;
     display: flex;

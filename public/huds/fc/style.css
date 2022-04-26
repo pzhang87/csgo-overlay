@@ -1,6 +1,11 @@
 @font-face {
   font-family: 'Torque Trial Medium';
-  src: url('torquetrial-medium.otf');
+  src: url('/files/fonts/torquetrial-medium.otf');
+}
+
+@font-face {
+  font-family: 'Torque Bold';
+  src: url('/files/fonts/Torque Bold.ttf');
 }
 
 html, body {
@@ -97,6 +102,7 @@ html, body {
     padding-right: 190px;
     line-height: 55px;
     width:500px;
+    font-family: 'Torque Bold', sans-serif;
 }
 
 #team-2-name {
@@ -105,6 +111,7 @@ html, body {
     padding-left: 190px;
     line-height: 55px;
     width:500px;
+    font-family: 'Torque Bold', sans-serif;
 }
 
 #score {
@@ -135,7 +142,7 @@ html, body {
     left: -86px;
     width: 12px;
     height: 72px;
-    /* transform: skewX(18deg); */
+    transform: skewX(-24deg);
     background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -145,7 +152,7 @@ html, body {
     left: -174px;
     height: 72px;
     width: 100px;
-    /* transform: skewX(18deg); */
+    transform: skewX(-24deg);
     background-color: #0064c8;
 }
 
@@ -156,7 +163,7 @@ html, body {
     left: 74px;
     width: 12px;
     height: 72px;
-    /* transform: skewX(-18deg); */
+    transform: skewX(24deg);
     background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -166,19 +173,20 @@ html, body {
     right: 26px;
     height: 72px;
     width: 100px;
-    /* transform: skewX(-18deg); */
+    transform: skewX(24deg);
     background-color: #eea61b;
 }
 
 #team-1-score {
-    /* transform: skewX(-18deg); */
-    padding-right: 42px;
-    text-align: right;
+    transform: skewX(24deg);
+    padding-right: 15px;
+    text-align: center;
 }
 
 #team-2-score {
-    /* transform: skewX(18deg); */
-    padding-left: 40px;
+    transform: skewX(-24deg);
+    padding-left: 15px;
+    text-align: center;
 }
 
 .score-num {
@@ -331,7 +339,7 @@ html, body {
 
 .alive {
     visibility: visible;
-    background-color:rgba(0, 0, 0, 0.5);
+    background-color:rgba(0, 0, 0, 0.7);
     height: 62px;
     position: relative;
     font-size: 14px;
@@ -494,7 +502,7 @@ html, body {
     width: 300px;
     height: 62px;
     visibility: hidden;
-    background-color: rgba(0, 0, 0, .4);
+    background-color: rgba(0, 0, 0, .3);
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-areas: "skull player player player stats stats stats stats";
